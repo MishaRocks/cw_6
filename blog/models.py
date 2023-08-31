@@ -1,10 +1,12 @@
 from django.db import models
 
+from mailsender.models import NULLABLE
+
 
 class Blogpost(models.Model):
     title = models.CharField(max_length=150, verbose_name='Заголовок')
     content = models.TextField(verbose_name='Содержание')
-    preview = models.ImageField(upload_to='blog/', verbose_name='изображение')
+    preview = models.ImageField(upload_to='blog/', verbose_name='изображение', **NULLABLE)
     views_count = models.IntegerField(default=0, verbose_name='Просмотры')
     date_published = models.DateTimeField(auto_now_add=True, verbose_name='Дата публикации')
 

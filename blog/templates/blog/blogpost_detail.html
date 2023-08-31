@@ -1,0 +1,15 @@
+{% extends 'index/base.html' %}
+{% load my_tags %}
+{% block content %}
+    <div class="row row-cols-1 text-center">
+        <div class="col">
+          <h2>{{ object.title }}</h2>
+          <p>{{ object.content }}</p>
+          <p><img src="{{ object.preview | mymedia }}" class="img-thumbnail" alt="..."></p>
+          <p>Просмотры: {{ object.views_count }}
+              | Опубликовано: {{ object.date_published }}
+          </p>
+
+        </div>
+    </div>
+{% endblock %}
