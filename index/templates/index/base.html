@@ -1,6 +1,5 @@
 {% load static %}
 
-<!doctype html>
 <html lang="en" data-bs-theme="auto">
   <head>
 
@@ -105,10 +104,15 @@
   <header>
     {% include 'index/include/main_menu.html' %}
 
-
     <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-      <h1 class="display-4 fw-normal text-body-emphasis">{{ title }}</h1>
-      <p class="fs-5 text-body-secondary">{{ page_about }}</p>
+      <h3 class="display-6 fw-normal text-body-emphasis">{{ title }}</h3>
+
+      {% if page_about %}
+        <p class="fs-5 text-body-secondary">{{ page_about }}</p>
+      {% endif %}
+
+      <hr>
+
     </div>
   </header>
 

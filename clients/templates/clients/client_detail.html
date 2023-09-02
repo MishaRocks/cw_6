@@ -1,0 +1,47 @@
+{% extends 'index/base.html' %}
+{% block content %}
+    <div class="row row-cols-2 text-center">
+    <div class="col">
+
+      <table class="table table-border">
+          <tr>
+              <td>
+                Имя и Фамилия
+              </td>
+              <td>
+                {{ object.name }} {{object.surname }}
+              </td>
+          </tr>
+          <tr>
+              <td>
+                Контактная почта
+              </td>
+              <td>
+                {{ object.email }}
+              </td>
+          </tr>
+          <tr>
+              <td>
+                Описание
+              </td>
+              <td>
+                {{ object.comment }}
+              </td>
+          </tr>
+          {% if object.letters is not None %}
+          <tr>
+              <td>
+                Действующие рассылки
+              </td>
+              <td>
+                {{ object.letters }}
+              </td>
+          </tr>
+          {% endif %}
+    </table>
+        <p><a href="{% url 'clients:client_update' object.pk %}">Редактировать</a> |
+        <a href="{% url 'clients:client_delete' object.pk %}">Удалить</a></p>
+
+        </div>
+    </div>
+{% endblock %}

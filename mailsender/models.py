@@ -21,7 +21,7 @@ class Mailing(models.Model):
     send_time = models.DateTimeField(verbose_name='Время рассылки')
     frequency = models.IntegerField(**NULLABLE, verbose_name='Периодичность')
     status = models.CharField(max_length=10, choices=status_var, default='Создана', verbose_name='Статус')
-    recipients = models.ManyToManyField('clients.Client', verbose_name='Получатель')
+    recipients = models.ManyToManyField('clients.Client', verbose_name='Получатель',  **NULLABLE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, verbose_name='Автор', **NULLABLE)
 
     def __str__(self):

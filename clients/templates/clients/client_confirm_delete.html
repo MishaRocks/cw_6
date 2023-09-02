@@ -6,8 +6,9 @@
       <div class="col">
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            {{form.as_p }}
-            <button type="submit" class="btn btn-primary">Добавить</button>
+            <p>Хотите удалить пользователя {{object.name}} {{object.surname}}?</p>
+            <button type="submit" class="btn btn-danger">Удалить</button>
+            <a href="{% url 'clients:clients_list' %}" class="btn btn-success">Отмена</a>
         </form>
       </div>
 
