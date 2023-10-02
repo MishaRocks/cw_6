@@ -5,7 +5,7 @@
 
       <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
         {% if user.is_authenticated %}
-        <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="#">Рассылки</a>
+        <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'mailsender:mail-list' %}">Рассылки</a>
         <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'clients:clients_list' %}">Получатели</a>
         {% endif %}
         <a class="py-2 link-body-emphasis text-decoration-none" href="{% url 'blog:blog_list' %}">Блог</a>

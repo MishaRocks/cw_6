@@ -1,0 +1,17 @@
+{% extends 'index/base.html' %}
+{% load my_tags %}
+{% block content %}
+    <div class="row row-cols-1 text-center">
+        <div class="col">
+          <h2>{{ object.message.title }}</h2>
+          <p>{{ object.message.content }}</p>
+          <p>{{ object.user }}</p>
+          <p>Периодичность: {{ object.frequency }}
+              | Статус рассылки: {{ object.status }}
+              | Время отправки: {{ object.send_time }}
+          </p>
+
+        </div>
+        <p><a href="{% url 'mailsender:mail-edit' object.pk %}" type="button" class="w-100 btn btn-lg btn-outline">Редактировать</a></p>
+    </div>
+{% endblock %}

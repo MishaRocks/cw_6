@@ -20,6 +20,13 @@ class ClientsCreateView(LoginRequiredMixin, CreateView):
     def get_success_url(self):
         return reverse('clients:client_profile', args=[self.object.pk])
 
+    def form_valid(self, form):
+        self.object = form.save()
+        self.object.user_id = self.request.user
+        self.object.save()
+
+        return super().form_valid(form)
+
 
 class ClientsListView(ListView):
     model = Client
@@ -28,10 +35,10 @@ class ClientsListView(ListView):
 class ClientsDetailView(LoginRequiredMixin, DetailView):
     model = Client
 
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        queryset = queryset.filter(pk=self.kwargs.get('pk'))
-        return queryset
+    # def get_queryset(self):
+    #     queryset = super().get_queryset()
+    #     queryset = queryset.filter(pk=self.kwargs.get('pk'))
+    #     return queryset
 
 
 class ClientsUpdateView(LoginRequiredMixin, UpdateView):
@@ -41,6 +48,13 @@ class ClientsUpdateView(LoginRequiredMixin, UpdateView):
 
     def get_success_url(self):
         return reverse('clients:client_profile', args=[self.object.pk])
+
+    def form_valid(self, form):
+        self.object = form.save()
+        self.object.user_id = self.request.user
+        self.object.save()
+
+        return super().form_valid(form)
 
 
 class ClientDeleteView(LoginRequiredMixin, DeleteView):
