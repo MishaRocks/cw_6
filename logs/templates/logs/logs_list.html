@@ -1,0 +1,24 @@
+{% extends 'index/base.html' %}
+{% block content %}
+    <div class="row row-cols-1 text-center">
+    <div class="col">
+
+      <table class="table table-borderless">
+        {% for object in object_list %}
+          <tr>
+              <td>
+                {{ object.mailing }}
+              </td>
+              <td>
+                <a href="{% url 'clients:client_profile' client.pk %}">{{ object.status }}</a>
+              </td>
+              <td>
+                {{ object.server_ans }}
+              </td>
+          </tr>
+        {% endfor %}
+    </table>
+
+        </div>
+    </div>
+{% endblock %}
