@@ -8,7 +8,8 @@ class Client(models.Model):
     name = models.CharField(max_length=50, verbose_name='Имя')
     surname = models.CharField(max_length=100, verbose_name='Фамилия', **NULLABLE)
     comment = models.TextField(verbose_name='Комментарий', **NULLABLE)
-    letters = models.ManyToManyField('mailsender.Mailing', verbose_name='Рассылка')
+    user = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Пользователь', **NULLABLE)
+    letters = models.ManyToManyField('mailsender.Mailing', verbose_name='Рассылка',  **NULLABLE)
 
     def __str__(self):
         return f'{self.email} ({self.name} {self.surname})'

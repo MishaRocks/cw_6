@@ -9,7 +9,7 @@
             <h4 class="my-0 fw-normal">{{ note.title }}</h4>
           </div>
           <div class="card-body">
-            <img src="{{ note.preview }}" class="img-thumbnail" alt="...">
+            <img src="{{ note.preview | mymedia }}" class="img-thumbnail" alt="...">
             <p>{{ note.content | truncatechars:100 }}</p>
             <a href="{% url 'blog:post' note.pk %}" type="button" class="w-100 btn btn-lg btn-outline-primary">Подробнее</a>
           </div>

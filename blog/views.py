@@ -7,6 +7,9 @@ from blog.models import Blogpost
 
 class BlogpostListView(ListView):
     model = Blogpost
+    extra_context = {
+        'title': f'Блог нашего сервиса',
+    }
 
 
 class BlogpostDetailView(DetailView):
@@ -25,7 +28,6 @@ class BlogpostDetailView(DetailView):
 
     def get_context_data(self, *args, **kwargs):
         context_data = super().get_context_data(*args, **kwargs)
-
         context_data['object_list'] = Blogpost.objects.get(pk=self.kwargs.get('pk')),
 
         return context_data
