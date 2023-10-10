@@ -8,11 +8,11 @@ from mailsender.models import Mailing
 
 
 def send_mailing(mailing_object: Mailing):
-    emails = [client.email for client in mailing_object.client.all()]
+    emails = [client.email for client in mailing_object.recipients.all()]
     try:
         send_mail(
-            subject=mailing_object.message.subject,
-            message=mailing_object.message.body,
+            subject=mailing_object.message.title,
+            message=mailing_object.message.content,
             from_email=settings.EMAIL_HOST_USER,
             recipient_list=emails,
         )
